@@ -1,0 +1,51 @@
+<div class="card my-5">
+    <div class="card-body">
+    <div class="form-group" (ngSubmit)="onSubmit()" >
+          <label for="pickUpDate">Pick-up Date</label>
+          <input type="date" [(ngModel)]="pickUpDateText" 
+            class="form-control" id="pickUpDate" name="pickUpDate" placeholder="Enter your Pick-up date"
+            required #pickUpDate="ngModel">
+               </div>
+         <div class="form-group">
+          <label for="returnDate">Return Date</label>
+          <input type="date" [(ngModel)]="returnDateText" 
+            class="form-control" id="returnDate" name="returnDate" placeholder="Enter your Return date"
+            required #returnDate="ngModel">
+            <div class="form-group"  >
+                <label for="transmission">Transmission</label>
+                <input type="text" [(ngModel)]="transmissionText" 
+                  class="form-control" id="transmission" name="transmission" placeholder="Enter your car transmission"
+                  required #transmission="ngModel">
+                     </div>
+                     <div class="form-group"  >
+                        <label for="vehicleType">Car Type</label>
+                        <input type="text" [(ngModel)]="vehicleTypeText" 
+                          class="form-control" id="vehicleType" name="vehicleType" placeholder="Enter your car type"
+                          required #transmission="ngModel">
+                             </div>         
+        <h2 class="card-title text-center text-white py-2">{{ title }}</h2>
+        <button (click)="filterAvailableCars($event)" type="submit" class="btn btn-info text-center text-white">Show</button>
+         <h2 class="card-title text-center text-white py-2">{{ title }}</h2>
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Vehicle Type</th>
+            <th scope="col">Vehicle Make</th>
+            <th scope="col">Transmission</th>
+            <th scope="col">Seats</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let car of cars; let i =index" (click)="carSelected(car)">
+              <td>{{ i }}</td>
+            <td>{{ car.vehicleType }}</td>
+            <td>{{ car.vehicleMake }}</td>
+            <td>{{ car.trasnmission }}</td>
+            <td>{{ car.seats }}</td>
+           
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,52 @@
+<div class="card my-5">
+    <div class="card-body">
+
+            <div class="form-group" (ngSubmit)="onSubmit()" >
+                    <label for="emailAddress">Email Address</label>
+                    <input type="text" [(ngModel)]="emailAddressText" 
+                      class="form-control" id="emailAddress" name="emailAddress" placeholder="Enter your email address"
+                      required #firstName="ngModel">
+                         </div>
+    <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" [(ngModel)]="firstNameText" 
+            class="form-control" id="firstName" name="firstName" placeholder="Enter your first name"
+            required #firstName="ngModel">
+               </div>
+         <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" [(ngModel)]="lastNameText" 
+            class="form-control" id="lastName" name="lastName" placeholder="Enter your last name"
+            required #lastName="ngModel">
+        <h2 class="card-title text-center text-white py-2">{{ title }}</h2>
+        <button (click)="getReservationsByCustomer($event)" type="submit" class="btn btn-info text-center text-white">Show</button>
+         <h2 class="card-title text-center text-white py-2">{{ title }}</h2>
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Location</th>
+            <th scope="col">Pick Up Date</th>
+            <th scope="col">Return Date</th>
+            <th scope="col">Car Type</th>
+            <th scope="col">Car Make</th>
+            <th></th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reservation of reservations; let i =index" >
+              <td>{{ i }}</td>
+              <td>{{ reservation.location }}</td>
+            <td>{{ reservation.pickUpDate }}</td>
+            <td>{{ reservation.returnDate }}</td>
+            <td>{{ reservation.vehicleType }}</td>
+            <td>{{ reservation.vehicleMake }}</td>
+            <td><button  (click)="deleteReservation(reservation.id)">Delete</button></td>
+           
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
